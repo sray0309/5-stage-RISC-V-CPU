@@ -1,0 +1,96 @@
+
+haha reg compare result: 
+@@@reg test on haha is Passed!
+
+haha mem compare result: 
+@@@mem test on haha is Passed!
+
+rv32_btest1 reg compare result: 
+@@@reg test on rv32_btest1 is Passed!
+
+rv32_btest1 mem compare result: 
+@@@mem test on rv32_btest1 is Passed!
+
+rv32_btest2 reg compare result: 
+@@@reg test on rv32_btest2 is Passed!
+
+rv32_btest2 mem compare result: 
+@@@mem test on rv32_btest2 is Passed!
+
+rv32_copy_long reg compare result: 
+@@@reg test on rv32_copy_long is Passed!
+
+rv32_copy_long mem compare result: 
+@@@mem test on rv32_copy_long is Passed!
+
+rv32_copy reg compare result: 
+@@@reg test on rv32_copy is Passed!
+
+rv32_copy mem compare result: 
+@@@mem test on rv32_copy is Passed!
+
+rv32_evens_long reg compare result: 
+@@@reg test on rv32_evens_long is Passed!
+
+rv32_evens_long mem compare result: 
+@@@mem test on rv32_evens_long is Passed!
+
+rv32_evens reg compare result: 
+@@@reg test on rv32_evens is Passed!
+
+rv32_evens mem compare result: 
+@@@mem test on rv32_evens is Passed!
+
+rv32_fib_long reg compare result: 
+@@@reg test on rv32_fib_long is Passed!
+
+rv32_fib_long mem compare result: 
+@@@mem test on rv32_fib_long is Passed!
+
+rv32_fib_rec reg compare result: 
+@@@reg test on rv32_fib_rec is Passed!
+
+rv32_fib_rec mem compare result: 
+@@@mem test on rv32_fib_rec is Passed!
+
+rv32_fib reg compare result: 
+@@@reg test on rv32_fib is Passed!
+
+rv32_fib mem compare result: 
+@@@mem test on rv32_fib is Passed!
+
+rv32_halt reg compare result: 
+@@@reg test on rv32_halt is Passed!
+
+rv32_halt mem compare result: 
+@@@mem test on rv32_halt is Passed!
+
+rv32_insertion reg compare result: 
+@@@reg test on rv32_insertion is Passed!
+
+rv32_insertion mem compare result: 
+@@@mem test on rv32_insertion is Passed!
+
+rv32_mult reg compare result: 
+@@@reg test on rv32_mult is Passed!
+
+rv32_mult mem compare result: 
+@@@mem test on rv32_mult is Passed!
+
+rv32_parallel reg compare result: 
+@@@reg test on rv32_parallel is Passed!
+
+rv32_parallel mem compare result: 
+@@@mem test on rv32_parallel is Passed!
+
+rv32_saxpy reg compare result: 
+@@@reg test on rv32_saxpy is Passed!
+
+rv32_saxpy mem compare result: 
+@@@mem test on rv32_saxpy is Passed!
+
+sampler reg compare result: 
+@@@reg test on sampler is Passed!
+
+sampler mem compare result: 
+@@@mem test on sampler is Passed!

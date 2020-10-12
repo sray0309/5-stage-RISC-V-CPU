@@ -1,0 +1,544 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version O-2018.06 for linux64 - May 21, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#/***********************************************************/
+#/*   FILE        : defaults.tcl                            */
+#/*   Description : Default Synopsys Design Compiler Script */
+#/*   Usage       : dc_shell -tcl_mode -f default.tcl       */
+#/*   You'll need to minimally set design_name & read files */
+#/***********************************************************/
+set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/" ]
+./ /afs/umich.edu/class/eecs470/lib/synopsys/
+set target_library "lec25dscc25_TT.db"
+lec25dscc25_TT.db
+set link_library [concat  "*" $target_library]
+* lec25dscc25_TT.db
+#/***********************************************************/
+#/* Set some flags to suppress warnings we don't care about */
+set suppress_errors [concat $suppress_errors "UID-401"]
+UID-401
+suppress_message {"VER-130"}
+#/***********************************************************/
+#/* The following five lines must be updated for every      */
+#/* new design                                              */
+#/***********************************************************/
+analyze -f sverilog [list "../sys_defs.svh" "../ISA.svh" "../verilog/pipeline.sv" "../verilog/if_stage.sv" "../verilog/id_stage.sv" "../verilog/ex_stage.sv" "../verilog/mem_stage.sv" "../verilog/wb_stage.sv" "../verilog/regfile.sv"]
+Running PRESTO HDLC
+Compiling source file ../sys_defs.svh
+Compiling source file ../ISA.svh
+Compiling source file ../verilog/pipeline.sv
+Compiling source file ../verilog/if_stage.sv
+Compiling source file ../verilog/id_stage.sv
+Warning:  ../verilog/id_stage.sv:193: The 'white space before ``' syntax is non-standard. Those spaces are discarded (VER-730)
+Warning:  ../verilog/id_stage.sv:197: The 'white space before ``' syntax is non-standard. Those spaces are discarded (VER-730)
+Warning:  ../verilog/id_stage.sv:205: The 'white space before ``' syntax is non-standard. Those spaces are discarded (VER-730)
+Compiling source file ../verilog/ex_stage.sv
+Compiling source file ../verilog/mem_stage.sv
+Warning:  ../verilog/mem_stage.sv:68: The construct 'assert property' is not supported in synthesis; it is ignored. (VER-708)
+Compiling source file ../verilog/wb_stage.sv
+Compiling source file ../verilog/regfile.sv
+Presto compilation completed successfully.
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+1
+elaborate pipeline
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine pipeline line 172 in file
+		'../verilog/pipeline.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  if_id_packet_reg   | Flip-flop |  94   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  if_id_packet_reg   | Flip-flop |   3   |  Y  | N  | N  | N  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine pipeline line 220 in file
+		'../verilog/pipeline.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  id_ex_packet_reg   | Flip-flop |  189  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine pipeline line 279 in file
+		'../verilog/pipeline.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  ex_mem_packet_reg  | Flip-flop |  111  |  Y  | N  | N  | N  | Y  | N  | N  |
+|    ex_mem_IR_reg    | Flip-flop |  29   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    ex_mem_IR_reg    | Flip-flop |   3   |  Y  | N  | N  | N  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine pipeline line 321 in file
+		'../verilog/pipeline.sv'.
+===================================================================================
+|      Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===================================================================================
+|    mem_wb_result_reg    | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     mem_wb_NPC_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      mem_wb_IR_reg      | Flip-flop |  29   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      mem_wb_IR_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | Y  | N  |
+|     mem_wb_halt_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   mem_wb_illegal_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|  mem_wb_valid_inst_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+| mem_wb_dest_reg_idx_reg | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+| mem_wb_take_branch_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===================================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'pipeline'.
+Information: Building the design 'if_stage'. (HDL-193)
+
+Inferred memory devices in process
+	in routine if_stage line 56 in file
+		'../verilog/if_stage.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     PC_reg_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'id_stage'. (HDL-193)
+
+Statistics for case statements in always block at line 299 in file
+	'../verilog/id_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           300            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'ex_stage'. (HDL-193)
+
+Statistics for case statements in always block at line 151 in file
+	'../verilog/ex_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           153            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 182 in file
+	'../verilog/ex_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           186            |     no/auto      |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mem_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'wb_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'regfile'. (HDL-193)
+
+Inferred memory devices in process
+	in routine regfile line 54 in file
+		'../verilog/regfile.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    registers_reg    | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|    regfile/26    |   32   |   32    |      5       |
+|    regfile/27    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully.
+Information: Building the design 'decoder'. (HDL-193)
+
+Statistics for case statements in always block at line 52 in file
+	'../verilog/id_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'alu'. (HDL-193)
+Warning:  ../verilog/ex_stage.sv:36: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:37: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:40: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:53: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:54: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:55: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:56: signed to unsigned part selection occurs. (VER-318)
+
+Statistics for case statements in always block at line 42 in file
+	'../verilog/ex_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            43            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'brcond'. (HDL-193)
+Warning:  ../verilog/ex_stage.sv:82: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../verilog/ex_stage.sv:83: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 84 in file
+	'../verilog/ex_stage.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            86            |     no/auto      |
+===============================================
+Presto compilation completed successfully.
+1
+set design_name pipeline
+pipeline
+set clock_name clock
+clock
+set CLK_PERIOD 30
+30
+#/***********************************************************/
+#/* The rest of this file may be left alone for most small  */
+#/* to moderate sized designs.  You may need to alter it    */
+#/* when synthesizing your final project.                   */
+#/***********************************************************/
+set SYN_DIR ./
+./
+#/***********************************************************/
+#/* Set some flags for optimisation */
+set compile_top_all_paths "true"
+true
+set auto_wire_load_selection "false"
+false
+set compile_seqmap_synchronous_extraction "true"
+true
+#/***********************************************************/
+#/*  Clk Periods/uncertainty/transition                     */
+set CLK_TRANSITION 0.1
+0.1
+set CLK_UNCERTAINTY 0.1
+0.1
+set CLK_LATENCY 0.1
+0.1
+#/* Input/output Delay values */
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
+#/* Critical Range (ns) */
+set CRIT_RANGE 1.0
+1.0
+#/***********************************************************/
+#/* Design Constrains: Not all used                         */
+set MAX_TRANSITION 1.0
+1.0
+set FAST_TRANSITION 0.1
+0.1
+set MAX_FANOUT 32
+32
+set MID_FANOUT 8
+8
+set LOW_FANOUT 1
+1
+set HIGH_DRIVE 0
+0
+set HIGH_LOAD 1.0
+1.0
+set AVG_LOAD 0.1
+0.1
+set AVG_FANOUT_LOAD 10
+10
+#/***********************************************************/
+#/*BASIC_INPUT = cb18os120_tsmc_max/nd02d1/A1
+#BASIC_OUTPUT = cb18os120_tsmc_max/nd02d1/ZN*/
+set DRIVING_CELL dffacs1
+dffacs1
+#/* DONT_USE_LIST = {   } */
+#/*************operation cons**************/
+#/*OP_WCASE = WCCOM;
+#OP_BCASE = BCCOM;*/
+set WIRE_LOAD "tsmcwire"
+tsmcwire
+set LOGICLIB lec25dscc25_TT
+lec25dscc25_TT
+#/*****************************/
+#/* Sourcing the file that sets the Search path and the libraries(target,link) */
+set sys_clk $clock_name
+clock
+set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
+./pipeline.vg
+set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
+./pipeline.ddc
+set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+./pipeline.rep
+set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
+./pipeline.chk
+#/* if we didnt find errors at this point, run */
+if {  $dc_shell_status != [list] } {
+   current_design $design_name
+  link
+  set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
+  set_wire_load_mode top
+  set_fix_multiple_port_nets -outputs -buffer_constants
+  create_clock -period $CLK_PERIOD -name $sys_clk [find port $sys_clk]
+  set_clock_uncertainty $CLK_UNCERTAINTY $sys_clk
+  set_fix_hold $sys_clk
+  group_path -from [all_inputs] -name input_grp
+  group_path -to [all_outputs] -name output_grp
+  set_driving_cell  -lib_cell $DRIVING_CELL [all_inputs]
+  remove_driving_cell [find port $sys_clk]
+  set_fanout_load $AVG_FANOUT_LOAD [all_outputs]
+  set_load $AVG_LOAD [all_outputs]
+  set_input_delay $AVG_INPUT_DELAY -clock $sys_clk [all_inputs]
+  remove_input_delay -clock $sys_clk [find port $sys_clk]
+  set_output_delay $AVG_OUTPUT_DELAY -clock $sys_clk [all_outputs]
+  set_critical_range $CRIT_RANGE [current_design]
+  set_max_delay $CLK_PERIOD [all_outputs]
+  set MAX_FANOUT $MAX_FANOUT
+  set MAX_TRANSITION $MAX_TRANSITION
+  uniquify
+  ungroup -all -flatten
+  redirect $chk_file { check_design }
+  compile -map_effort medium
+  write -hier -format verilog -output $netlist_file $design_name
+  write -hier -format ddc -output $ddc_file $design_name
+  redirect $rep_file { report_design -nosplit }
+  redirect -append $rep_file { report_area }
+  redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+  redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+  remove_design -all
+  read_file -format verilog $netlist_file
+  current_design $design_name
+  redirect -append $rep_file { report_reference -nosplit }
+  quit
+} else {
+   quit
+}
+Current design is 'pipeline'.
+
+  Linking design 'pipeline'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (10 designs)              /afs/umich.edu/user/r/a/rayss/Desktop/470_20fall/project3/eecs470_f20_project3_rayss/project-v-open/synth/pipeline.db, etc
+  lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+
+Current design is 'pipeline'.
+Information: Updating graph... (UID-83)
+Warning: Design 'pipeline' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.0 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 122 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'pipeline'
+Information: The register 'ex_mem_packet_reg[csr_op]' will be removed. (OPT-1207)
+Information: The register 'id_ex_packet_reg[load_stall]' will be removed. (OPT-1207)
+Information: The register 'id_ex_packet_reg[csr_op]' will be removed. (OPT-1207)
+Information: The register 'id_ex_packet_reg[opb_select][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'id_ex_packet_reg[alu_func][4]' is a constant and will be removed. (OPT-1206)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'pipeline_DW_rash_0'
+  Processing 'pipeline_DW01_ash_0'
+  Processing 'pipeline_DW_rash_1'
+  Processing 'pipeline_DW01_cmp2_0'
+  Processing 'pipeline_DW01_cmp2_1'
+  Processing 'pipeline_DW01_sub_0'
+  Processing 'pipeline_DW01_add_0'
+  Processing 'pipeline_DW01_cmp6_0'
+  Processing 'pipeline_DW01_cmp6_1'
+  Processing 'pipeline_DW01_cmp6_2'
+  Processing 'pipeline_DW01_cmp6_3'
+  Processing 'pipeline_DW01_add_1'
+  Processing 'pipeline_DW01_cmp2_2'
+  Processing 'pipeline_DW01_cmp6_4'
+  Processing 'pipeline_DW01_cmp6_5'
+  Processing 'pipeline_DW01_cmp6_6'
+  Processing 'pipeline_DW02_mult_0'
+  Processing 'pipeline_DW01_add_2'
+  Processing 'pipeline_DW02_mult_1'
+  Processing 'pipeline_DW01_add_3'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:09 1651971.0      0.00       0.0      71.4                                0.00  
+    0:00:09 1651971.0      0.00       0.0      71.4                                0.00  
+    0:00:11 1582306.7      0.00       0.0      69.0                                0.00  
+    0:00:11 1582306.7      0.00       0.0      69.0                                0.00  
+    0:00:11 1582306.7      0.00       0.0      69.0                                0.00  
+    0:00:11 1582306.7      0.00       0.0      69.0                                0.00  
+    0:00:11 1582306.7      0.00       0.0      69.0                                0.00  
+    0:00:13 1019797.0      0.00       0.0       1.5                                0.00  
+    0:00:13 1016056.2      0.00       0.0       1.5                                0.00  
+    0:00:14 1016047.9      0.00       0.0       1.5                                0.00  
+    0:00:14 1016047.9      0.00       0.0       1.5                                0.00  
+    0:00:14 1016047.9      0.00       0.0       1.5                                0.00  
+    0:00:14 1016023.0      0.00       0.0       1.5                                0.00  
+    0:00:14 1016023.0      0.00       0.0       1.5                                0.00  
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+    0:00:14 1016106.0      0.00       0.0       0.0                                0.00  
+    0:00:15 1015923.5      0.00       0.0       0.8                                0.00  
+    0:00:15 1014994.5      0.00       0.0      67.8                                0.00  
+
+
+  Beginning Design Rule Fixing  (min_path)  (max_transition)  (max_fanout)
+  ----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15 1014994.5      0.00       0.0      67.8                               -4.42  
+    0:00:15 1015243.3      0.00       0.0       0.0 pipeline_commit_NPC[4]        -4.42  
+    0:00:15 1015243.3      0.00       0.0       0.0                               -4.42  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15 1015243.3      0.00       0.0       0.0                               -4.42  
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15 1015243.3      0.00       0.0       0.0                               -4.42  
+    0:00:15 1015243.3      0.00       0.0       0.0                               -4.42  
+    0:00:16 1005414.5      0.00       0.0       0.0                               -4.15  
+    0:00:16 1000661.8      0.00       0.0       0.0                               -4.15  
+    0:00:16  997717.3      0.00       0.0       0.0                               -4.15  
+    0:00:16  995527.5      0.00       0.0       0.0                               -4.15  
+    0:00:17  994358.0      0.00       0.0       0.1                               -4.15  
+    0:00:17  994059.4      0.00       0.0       0.1                               -4.15  
+    0:00:17  994059.4      0.00       0.0       0.1                               -4.15  
+    0:00:17  994125.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  993196.8      0.00       0.0       0.0                               -4.15  
+    0:00:17  995975.4      0.00       0.0       0.0                                0.00  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:17  995975.4      0.00       0.0       0.0                                0.00  
+    0:00:17  997136.7      0.00       0.0       0.0                                0.00  
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'pipeline' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clock': 1585 load(s), 1 driver(s)
+Writing verilog file '/afs/umich.edu/user/r/a/rayss/Desktop/470_20fall/project3/eecs470_f20_project3_rayss/project-v-open/synth/pipeline.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 30 nets to module pipeline_DW02_mult_0 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 32 nets to module pipeline using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Writing ddc file './pipeline.ddc'.
+Removing design 'pipeline'
+Removing design 'pipeline_DW01_ash_0'
+Removing design 'pipeline_DW01_sub_0'
+Removing design 'pipeline_DW01_add_0'
+Removing design 'pipeline_DW01_add_1'
+Removing design 'pipeline_DW01_cmp6_4'
+Removing design 'pipeline_DW02_mult_0'
+Removing design 'pipeline_DW01_add_2'
+Removing design 'pipeline_DW02_mult_1'
+Removing design 'pipeline_DW01_add_3'
+Removing library 'lec25dscc25_TT'
+Removing library 'gtech'
+Removing library 'standard.sldb'
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Loading verilog file '/afs/umich.edu/user/r/a/rayss/Desktop/470_20fall/project3/eecs470_f20_project3_rayss/project-v-open/synth/pipeline.vg'
+Detecting input file type automatically (-rtl or -netlist).
+Running DC verilog reader
+Performing 'read' command.
+Compiling source file /afs/umich.edu/user/r/a/rayss/Desktop/470_20fall/project3/eecs470_f20_project3_rayss/project-v-open/synth/pipeline.vg
+Reading with netlist reader (equivalent to -netlist option).
+Verilog netlist reader completed successfully.
+Current design is now '/afs/umich.edu/user/r/a/rayss/Desktop/470_20fall/project3/eecs470_f20_project3_rayss/project-v-open/synth/pipeline_DW01_ash_0.db:pipeline_DW01_ash_0'
+Loaded 10 designs.
+Current design is 'pipeline_DW01_ash_0'.
+Current design is 'pipeline'.
+
+Thank you...
